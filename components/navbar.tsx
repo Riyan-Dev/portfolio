@@ -85,7 +85,7 @@ export default function Navbar() {
             <Calendar size={24} />
           </motion.a>
           <motion.a
-            href="https://github.com/muhammad-riyan"
+            href="https://github.com/Riyan-Dev"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-300 hover:text-white transition-colors duration-300"
@@ -125,7 +125,7 @@ export default function Navbar() {
             <Calendar size={24} />
           </motion.a>
           <motion.a
-            href="https://github.com/muhammad-riyan"
+            href="https://github.com/Riyan-Dev"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-300 hover:text-white transition-colors duration-300"

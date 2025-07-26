@@ -251,7 +251,7 @@ export default function Home() {
                   <p className="text-gray-400 mb-2">Prefer to schedule a meeting?</p>
                   <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <a
-                      href="https://calendly.com/aakash4dev/quickchat"
+                      href=""
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700"
@@ -280,11 +280,11 @@ export default function Home() {
       <footer className="py-12 bg-gradient-to-t from-gray-900 to-black">
         <div className="container px-4 mx-auto">
           <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <SocialIcon icon={<Github />} href="https://github.com/aakash4dev" label="GitHub" />
-            <SocialIcon icon={<Linkedin />} href="https://linkedin.com/in/aakash4dev" label="LinkedIn" />
-            <SocialIcon icon={<Twitter />} href="https://twitter.com/aakash4dev" label="Twitter" />
-            <SocialIcon icon={<MessageSquare />} href="https://discord.com/users/aakash4dev" label="Discord" />
-            <SocialIcon icon={<PenTool />} href="https://medium.com/@aakash4dev" label="Medium" />
+            <SocialIcon icon={<Github />} href="https://github.com/Riyan-Dev" label="GitHub" />
+            <SocialIcon icon={<Linkedin />} href="https://www.linkedin.com/in/muhammad-riyan-aslam-7b2340188" label="LinkedIn" />
+            {/* <SocialIcon icon={<Twitter />} href="https://twitter.com/aakash4dev" label="Twitter" /> */}
+            {/* <SocialIcon icon={<MessageSquare />} href="https://discord.com/users/aakash4dev" label="Discord" /> */}
+            {/* <SocialIcon icon={<PenTool />} href="https://medium.com/@aakash4dev" label="Medium" /> */}
             <SocialIcon
               icon={<Smartphone />}
               href="#"

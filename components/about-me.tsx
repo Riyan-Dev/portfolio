@@ -123,7 +123,7 @@ export default function AboutMe() {
 								{/* Mobile description */}
 								<p className="text-lg leading-relaxed md:hidden">
 									AI Software Engineer 🤖 and Full Stack Dev 💻. Building
-									intelligent solutions with Flutter, Node.js, and cutting-edge
+									intelligent solutions Node.js, and cutting-edge
 									AI. From computer vision to blockchain, turning complex
 									problems into elegant code. 🚀⚡🔥
 								</p>
