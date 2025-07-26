@@ -294,7 +294,12 @@ export default function AboutMe() {
 	)
 }
 
-function SkillBar({ name, proficiency }) {
+type SkillBarProps = {
+	name: string
+	proficiency: number
+}
+
+function SkillBar({ name, proficiency }: SkillBarProps) {
 	return (
 		<div className="mb-4">
 			<div className="flex justify-between mb-1">
