@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import {
   Github,
   Linkedin,
@@ -26,10 +26,19 @@ import AboutMe from "@/components/about-me"
 import Loading from "@/components/loading"
 import InteractiveShapes from "@/components/InteractiveShapes"
 import AnimatedBoxes from "@/components/AnimatedBoxes"
+import LightBeam from "@/components/light-beam"
+
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
   const [loading, setLoading] = useState(true)
+  const { scrollYProgress } = useScroll()
+
+  // Parallax transforms
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, -500])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
+
 
   useEffect(() => {
     setMounted(true)
@@ -50,24 +59,47 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-black text-white">
       <CustomCursor />
       <Navbar />
       <InteractiveShapes />
 
-      {/* Hero Section with Animated Boxes */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero Section with Parallax and Light Effect */}
+      <motion.section
+        id="home"
+        className="fixed top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden z-10"
+        style={{
+          y: heroY,
+          opacity: heroOpacity,
+          scale: heroScale,
+        }}
+      >
         <AnimatedBoxes />
-        <div className="container relative z-10 px-4 mx-auto">
+        <LightBeam />
+        <div className="container relative z-20 px-4 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-cyan-500 to-blue-500">
+            <motion.h1
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-cyan-500 to-blue-500 relative"
+              animate={{
+                textShadow: [
+                  "0 0 20px rgba(6, 182, 212, 0.3)",
+                  "0 0 40px rgba(6, 182, 212, 0.6)",
+                  "0 0 20px rgba(6, 182, 212, 0.3)",
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+              }}
+            >
               Hey! I'm Muhammad Riyan
-            </h1>
+             </motion.h1>
             <h2 className="text-xl md:text-2xl mb-8 text-gray-300">
               🤖 AI Software Engineer | Full-Stack Developer | Flutter Expert
             </h2>
@@ -88,17 +120,32 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-b from-black to-gray-900">
+      {/* Content sections with higher z-index to appear above hero */}
+      <div className="relative z-30 bg-black" style={{ marginTop: "100vh" }}>
+        <motion.section
+          id="about"
+          className="py-20 bg-gradient-to-b from-black to-gray-900"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
         <div className="container px-4 mx-auto">
           <AboutMe />
         </div>
-      </section>
+     </motion.section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-black">
+      <motion.section
+          id="services"
+          className="py-20 bg-black"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
         <div className="container px-4 mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -146,10 +193,17 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Work Section */}
-      <section id="work" className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <motion.section
+          id="work"
+          className="py-20 bg-gradient-to-b from-gray-900 to-black"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
         <div className="container px-4 mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -187,10 +241,17 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-black">
+      <motion.section
+          id="contact"
+          className="py-20 bg-black"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
         <div className="container px-4 mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -260,7 +321,7 @@ export default function Home() {
                       Schedule a Meeting
                     </a>
                     <a
-                      href="https://drive.google.com/file/d/1Prtj5UBWzvVys8TviXZL-yN_551cRQJQ/view"
+                      href="https://drive.google.com/file/d/1OSWa8YUpq6vJaCGoOcaNO-CgzwT9rCwd/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700"
@@ -274,7 +335,7 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer with Social Links */}
       <footer className="py-12 bg-gradient-to-t from-gray-900 to-black">
@@ -303,23 +364,32 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   )
 }
 
 function ServiceCard({ icon, title, description }) {
   return (
-    <div className="p-6 rounded-lg bg-gray-900 border border-gray-800 hover:border-purple-500 transition-all duration-300 text-center md:text-left">
+    <motion.div
+      className="p-6 rounded-lg bg-gray-900 border border-gray-800 hover:border-purple-500 transition-all duration-300 text-center md:text-left"
+      whileHover={{ scale: 1.05, y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
       <div className="mb-4 flex justify-center md:justify-start">{icon}</div>
       <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
       <p className="text-gray-400">{description}</p>
-    </div>
+    </motion.div>
   )
 }
 
 function ProjectCard({ title, description, tags, image }) {
   return (
-    <div className="p-6 rounded-lg bg-gray-900 border border-gray-800 hover:border-purple-500 transition-all duration-300">
+    <motion.div
+      className="p-6 rounded-lg bg-gray-900 border border-gray-800 hover:border-purple-500 transition-all duration-300"
+      whileHover={{ scale: 1.05, y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
       <h3 className="text-xl font-bold mb-3 text-white text-center md:text-left">{title}</h3>
       <p className="text-gray-400 mb-4 text-center md:text-left">{description}</p>
       <div className="flex flex-wrap justify-center md:justify-start gap-2">
@@ -332,7 +402,7 @@ function ProjectCard({ title, description, tags, image }) {
           </span>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
