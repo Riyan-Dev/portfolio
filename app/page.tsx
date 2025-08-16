@@ -1,5 +1,6 @@
 "use client"
 
+import dynamic from 'next/dynamic'
 import type React from "react"
 
 import { useState, useEffect } from "react"
@@ -24,9 +25,10 @@ import SocialIcon from "@/components/social-icon"
 import { Button } from "@/components/ui/button"
 import AboutMe from "@/components/about-me"
 import Loading from "@/components/loading"
-import InteractiveShapes from "@/components/InteractiveShapes"
+// import InteractiveShapes from "@/components/InteractiveShapes"
 import AnimatedBoxes from "@/components/AnimatedBoxes"
 import LightBeam from "@/components/light-beam"
+import FluidCursor from '@/components/fluid-cursor';
 
 
 export default function Home() {
@@ -60,48 +62,53 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <CustomCursor />
-      <Navbar />
-      <InteractiveShapes />
-
+      
+      <div className="fixed inset-0 z-0 overflow-hidden bg-slate-100">
+        <FluidCursor />
+      </div>
+      <div className="relative z-50">
+        <CustomCursor />
+        <Navbar />
+      </div>
       {/* Hero Section with Parallax and Light Effect */}
       <motion.section
         id="home"
-        className="fixed top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden z-10"
+        className="fixed top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden"
+        initial={{ opacity: 1, y: 0, scale: 1 }} // ensures visible on load
+        animate={{ opacity: 1, y: 0, scale: 1 }} // holds the initial state before scroll changes
         style={{
           y: heroY,
           opacity: heroOpacity,
           scale: heroScale,
         }}
+        transition={{ type: "spring", stiffness: 60, damping: 20 }}
       >
-        <AnimatedBoxes />
-        <LightBeam />
         <div className="container relative z-20 px-4 mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="text-center"
           >
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-cyan-500 to-blue-500 relative"
+              className="text-4xl md:text-6xl lg:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-black via-slate-600 to-black relative"
               animate={{
                 textShadow: [
-                  "0 0 20px rgba(6, 182, 212, 0.3)",
                   "0 0 40px rgba(6, 182, 212, 0.6)",
-                  "0 0 20px rgba(6, 182, 212, 0.3)",
+                  "0 0 80px rgba(6, 182, 212, 0.9)",
+                  "0 0 40px rgba(6, 182, 212, 0.6)",
                 ],
               }}
               transition={{
                 duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
+                repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
               Hey! I'm Muhammad Riyan
-             </motion.h1>
-            <h2 className="text-xl md:text-2xl mb-8 text-gray-300">
-              🤖 AI Software Engineer | Full-Stack Developer | Flutter Expert
+            </motion.h1>
+            <h2 className="text-xl md:text-2xl mb-8 text-gray-900">
+              🤖 AI Software Engineer | Full-Stack Developer | DevOps Engineer
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               <ScrollLink to="work" smooth={true} duration={500}>
@@ -112,7 +119,7 @@ export default function Home() {
               <ScrollLink to="contact" smooth={true} duration={500}>
                 <Button
                   variant="outline"
-                  className="bg-transparent border-2 border-purple-500 text-white hover:bg-purple-500 hover:text-white transition-all duration-300"
+                  className="bg-transparent border-2 border-purple-500 text-black hover:bg-purple-500 hover:text-white transition-all duration-300"
                 >
                   Contact Me
                 </Button>

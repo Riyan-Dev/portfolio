@@ -12,7 +12,7 @@ const timelineData = [
 		period: "06/2025 - Present",
 		location: "Pakistan",
 		type: "Full-time",
-		logo: "/placeholder.svg?height=56&width=56",
+		logo: "/portfolio/visionrd.jpeg?height=56&width=56",
 		skills: [
 			"Computer Vision",
 			"Redis",
@@ -28,7 +28,7 @@ const timelineData = [
 		period: "02/2025 - 06/2025",
 		location: "Pakistan",
 		type: "Apprentice",
-		logo: "/placeholder.svg?height=56&width=56",
+		logo: "/portfolio/cowlar.png?height=56&width=56",
 		skills: ["Node.js", "Vue.js", "MongoDB", "Docker", "Fabric.js"],
 	},
 	{
@@ -38,7 +38,7 @@ const timelineData = [
 		period: "06/2024 - 08/2024",
 		location: "Pakistan",
 		type: "Internship",
-		logo: "/placeholder.svg?height=56&width=56",
+		logo: "/portfolio/quest.jpeg?height=56&width=56",
 		skills: ["FastAPI", "LLM", "CI/CD", "GitHub Actions", "DigitalOcean"],
 	},
 	{
@@ -48,7 +48,7 @@ const timelineData = [
 		period: "04/2024 - 07/2024",
 		location: "Pakistan",
 		type: "Contract",
-		logo: "/placeholder.svg?height=56&width=56",
+		logo: "/portfolio/lancers.jpeg?height=56&width=56",
 		skills: ["Flutter", "Node.js", "Flask", "AI Integration", "NLP"],
 	},
 	{
@@ -58,7 +58,7 @@ const timelineData = [
 		period: "09/2023 - 04/2024",
 		location: "Pakistan",
 		type: "Full-time",
-		logo: "/placeholder.svg?height=56&width=56",
+		logo: "/portfolio/sparkai.png?height=56&width=56",
 		skills: ["Flutter", "Firebase", "GCP", "LLM", "Agile/Scrum"],
 	},
 ]

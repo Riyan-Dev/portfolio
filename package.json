@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint",
-  "export": "next export",
-  "deploy": "gh-pages -d out"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
@@ -66,6 +66,7 @@
     "tsparticles-engine": "latest",
     "tsparticles-slim": "latest",
     "vaul": "^0.9.6",
+    "webgl-fluid-enhanced": "^0.8.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
